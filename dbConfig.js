@@ -84,12 +84,12 @@ db.query(createUsersTableQuery, (err, res) => {
     }
 });
 
-db.query(adminCommand, (err, res) => {
-    if (err) {
-        console.error("Error altering role column in table users", err);
-    } else {
-        console.log("Users table altered successfully");
-    }
-});
+// db.query(adminCommand, (err, res) => {
+//     if (err) {
+//         console.error("Error altering role column in table users", err);
+//     } else {
+//         console.log("Users table altered successfully");
+//     }
+// });
 
 export default db;
