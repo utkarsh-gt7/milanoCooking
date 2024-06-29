@@ -1,4 +1,12 @@
 <%- include("partials/header.ejs") %>
+<style>
+  @media (max-width: 768px) {
+    #map iframe {
+      width: 400px;
+      height: 300px;
+    }
+  }
+</style>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="/">Milano Cooking Classes</a>
@@ -85,9 +93,12 @@
               </div>
             </form>
 					</div>
-					<div class="col-md-6 d-flex align-items-stretch">
-						<div id="map"></div>
-					</div>
+          <div class="col-md-6 d-flex align-self-stretch">
+            <div id="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.048765540251!2d9.234317111720047!3d45.488962731665694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6ff6cb6e097%3A0x6f64942ca602cac2!2sVia%20Ronchi%2C%2033%2C%2020134%20Milano%20MI%2C%20Italy!5e0!3m2!1sen!2sin!4v1719655246903!5m2!1sen!2sin" width="550" height="1000" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+          
 				</div>
 			</div>
 		</section>
