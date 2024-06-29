@@ -1,0 +1,29 @@
+.joinchat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.joinchat__button {
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.joinchat__button__open {
+    display: none; /* Adjust based on interaction, for example, show on hover */
+}
+
+.joinchat__button__image img {
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
