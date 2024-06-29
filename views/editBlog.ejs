@@ -1,0 +1,85 @@
+<%- include("partials/header.ejs") %>
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="/">Milano Cooking Classes</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/cookingClasses" class="nav-link">Corsi di cucina</a></li>
+            <li class="nav-item"><a href="/personalChefs" class="nav-link">Chef a domicilio</a></li>
+            <li class="nav-item"><a href="/cookingTeamBuilding" class="nav-link">Cooking team building</a></li>
+            <li class="nav-item"><a href="/recipes" class="nav-link">Ricette</a></li>
+            <%if(locals.user) { %>
+              <li class="nav-item active"><a href="/logout" class="nav-link">Logout</a></li>
+            <% }else{ %>
+              <li class="nav-item active"><a href="/login" class="nav-link">Login</a></li>
+            <% } %>
+	          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+	          <li class="nav-item cta"><a href="/payment" class="nav-link">Pay</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center mb-4">
+            <h1 class="mb-2 bread">Edit your Blog Post</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row">
+                    <form id="blogForm" method="post" action=<%= `/edit?id=${post.id}` %>>
+                        <div class="form-group">
+                            <label for="type">Post Category:</label>
+                            <select class="form-control" id="type" name="type" required>
+                                <option value="cookingclasses">Cooking Classes</option>
+                                <option value="chefs">Personal Chefs</option>
+                                <option value="teambuilding">Cooking Team Building</option>
+                                <option value="recipes">Recipes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" class="form-control" id="title" name="title" value=<%= post.title %> required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subtitle">Subtitle:</label>
+                            <input type="text" class="form-control" id="subtitle" name="subtitle" value=<%= post.subtitle %> required>
+                        </div>
+                        <div class="form-group">
+                            <label for="img_url">Cover Image URL:</label>
+                            <input type="text" class="form-control" id="img_url" name="img_url" value=<%= post.img_url %> required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editor">Body:</label>
+                            <textarea id="editor" name="content" value=<%- post.body %>></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  
+                      <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+                      <script>
+                          ClassicEditor
+                              .create( document.querySelector( '#editor' ) )
+                              .catch( error => {
+                                  console.error( error );
+                              } );
+                      </script>
+        </div>
+
+			</div>
+		</section>
+		
+    <%- include("partials/footer.ejs") %>

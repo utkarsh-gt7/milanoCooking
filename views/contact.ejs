@@ -1,0 +1,120 @@
+<%- include("partials/header.ejs") %>
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="/">Milano Cooking Classes</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/cookingClasses" class="nav-link">Corsi di cucina</a></li>
+            <li class="nav-item"><a href="/personalChefs" class="nav-link">Chef a domicilio</a></li>
+            <li class="nav-item"><a href="/cookingTeamBuilding" class="nav-link">Cooking team building</a></li>
+            <li class="nav-item"><a href="/recipes" class="nav-link">Ricette</a></li>
+            <%if(locals.user) { %>
+              <li class="nav-item active"><a href="/logout" class="nav-link">Logout</a></li>
+            <% }else{ %>
+              <li class="nav-item active"><a href="/login" class="nav-link">Login</a></li>
+            <% } %>
+	          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+	          <li class="nav-item cta"><a href="/payment" class="nav-link">Pay</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center mb-4">
+            <h1 class="mb-2 bread">Contact</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact us <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+			<div class="container">
+				<div class="row d-flex align-items-stretch no-gutters">
+					<div class="col-md-6 pt-5 px-2 pb-2 p-md-5 order-md-last">
+						<h2 class="h4 mb-2 mb-md-5 font-weight-bold">Contatti</h2>
+            <p> 
+              Per richieste di informazioni generali sui nostri servizi, compila il modulo sottostante, ti risponderemo il prima possibile. Per richiedere la nostra disponibilità in una data specifica, ti preghiamo di controllare la data e la disponibilità nell'attività di tuo interesse. Grazie!</p>
+            <br>
+						<form action="/contact" method="post">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="phone" class="form-control" placeholder="Your Contact number with country code" required>
+              </div>
+              <div class="form-group">
+                <div class="select-wrap one-third">
+                  <select name="event" id="" class="form-control">
+                    <option value="Personal Chef Service">Personal Chef Service</option>
+                    <option value="Cooking Chefs">Cooking Class</option>
+                    <option value="Cooking Team Building">Cooking Team Building</option>
+                    <option value="Corporate Event">Corporate Event</option>
+                    <option value="Cook Together">Cook Together</option>
+                    <option value="Private Event">Private event (birthday party, baptism, first communion, confirmation, wedding)</option>
+                    <option value="Affiliate Program">Affiliate Program</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="select-wrap one-third">
+                  <select name="location" id="" class="form-control">
+                    <option value="Milano">Milano</option>
+                    <option value="Lago di Como">Lago di Como</option>
+                    <option value="Lecco">Lecco</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Any note for us?"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value=<%= locals.message ? locals.message : "Send" %> class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+					</div>
+					<div class="col-md-6 d-flex align-items-stretch">
+						<div id="map"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h4 font-weight-bold">Contact Information</h2>  
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-4 d-flex">
+          	<div class="dbox">
+	            <p><span>Address:</span> 20134 Milan Via Ronchi 33</p>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+          	<div class="dbox">
+	            <p><span>Phone:</span> <a href="tel://+393936807104">+39 3936807104</a></p>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+          	<div class="dbox">
+	            <p><span>Email:</span> <a href="mailto:deborascookingclass@gmail.com">Deborascookingclass@gmail.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+    <%- include("partials/footer.ejs") %>
