@@ -1,4 +1,39 @@
 import paypal from 'paypal-rest-sdk';
+import nodemailer from "nodemailer";
+import dotenv from 'dotenv';
+dotenv.config();
+
+const my_email = process.env.MY_EMAIL;
+const my_pass = process.env.MY_PASS;
+
+const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: my_email,
+        pass: my_pass
+    }
+});
+function sendMail(Semail) {
+    return new Promise((resolve, reject) => {
+      const mailOptions = {
+        from: my_email,
+        to: Semail,
+        subject: `Here's your ebook. Enjoy!`,
+        text:  "Download at https://drive.google.com/file/d/19m6y4sH08Tfifx3-sXkY6hMaUpmg9hIr/view?usp=sharing"
+      };
+  
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error(error);
+          reject(false);
+        } else {
+          console.log('Email sent: ' + info.response);
+          resolve(true);
+        }
+      });
+    });
+}
+
 
 const { PAYPAL_MODE, PAYPAL_CLIENT_KEY, PAYPAL_SECRET_KEY } = process.env;
 
@@ -24,9 +59,14 @@ const payProduct = async(req,res)=>{
 
     try {
         console.log("Successful Received: " + req.body.customAmount);
-        const customAmount = parseFloat(req.body.customAmount).toFixed(2);
+        var customAmount = parseFloat(req.body.customAmount).toFixed(2);
+        if(req.body.customAmount == undefined){
+            customAmount = 15.00;
+            req.session.email = req.body.email;
+        }
         console.log(customAmount);
         req.session.customAmount = customAmount;
+        
         const create_payment_json = {
             "intent": "sale",
             "payer": {
@@ -76,7 +116,7 @@ const successPage = async(req,res)=>{
 
     try {
         
-        const customAmount = req.session.customAmount;
+        var customAmount = req.session.customAmount;
         console.log(customAmount);
         const payerId = req.query.PayerID;
         const paymentId = req.query.paymentId;
@@ -105,6 +145,10 @@ const successPage = async(req,res)=>{
         // let o_datetime = payment.create_time;
 
         console.log("Successful: " + req.body);
+
+        const Semail = req.session.email;
+
+        sendMail(Semail);
 
         // payment.transactions.forEach(transaction => {
         //     transaction.item_list.items.forEach(item => {
