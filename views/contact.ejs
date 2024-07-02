@@ -2,8 +2,20 @@
 <style>
   @media (max-width: 768px) {
     #map iframe {
-      width: 400px;
+      width: 100%;
       height: 300px;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 992px) {
+    #map iframe {
+      width: 100%;
+      height: 500px;
+    }
+  }
+  @media (min-width: 993px) {
+    #map iframe {
+      width: 100%;
+      height: 1000px;
     }
   }
 </style>
@@ -103,7 +115,7 @@
 			</div>
 		</section>
 		<section class="ftco-section contact-section">
-      <div class="container">
+      <div class="container" class="col-md-6 d-flex align-self-stretch">
         <div class="row d-flex contact-info">
           <div class="col-md-12 mb-4">
             <h2 class="h4 font-weight-bold">Contact Information</h2>  
