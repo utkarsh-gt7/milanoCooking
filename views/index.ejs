@@ -11,7 +11,7 @@
             <li class="nav-item"><a href="/cookingClasses" class="nav-link">Corsi di cucina</a></li>
             <li class="nav-item"><a href="/personalChefs" class="nav-link">Chef a domicilio</a></li>
             <li class="nav-item"><a href="/cookingTeamBuilding" class="nav-link">Cooking team building</a></li>
-            <li class="nav-item"><a href="/recipes" class="nav-link">Ricette</a></li>
+            <li class="nav-item dropdown"><div id="google_translate_element"></div></li>
             <%if(locals.user) { %>
               <li class="nav-item active"><a href="/logout" class="nav-link">Logout</a></li>
             <% }else{ %>
@@ -92,7 +92,7 @@
 				Siamo prima di tutto una coppia innamorata del mondo, amiamo viaggiare e la nostra priorità è trasmettere a ciascuno il calore familiare attorno ad una buona tavola.
 				</p>
 						<p class="time">
-							<span>Mon - Sunday <strong>10 AM - 8 PM</strong></span>
+							<span>Mon - Sunday <strong>10 AM - 4 PM</strong></span>
 							<span>+39 3936807104</span>
 						</p>
 					</div>
@@ -205,19 +205,48 @@
 
         	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
         		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-              <div class="menu-img img" style="background-image: url(imagesOriginal/ebookCover.jpg);"></div>
+              <div class="menu-img img" style="background-image: url(https://assets.lulu.com/cover_thumbs/5/7/5798edk-ebook-shortedge-384.jpg);"></div>
               <div class="text d-flex align-items-center">
 								<div>
 	              	<div class="d-flex">
 		                <div class="one-half">
-
-		                  <h3>WALKING AROUND ITALY with Debora</h3>
+		                  <h3>A SPASSO PER L'ITALIA con Debora</h3>
 		                </div>
 		                <div class="one-forth">
 		                  <span class="price">€15</span>
 		                </div>
 		              </div>
-		              <p><span>Book</span>, <span>Italian</span>, <span>Recipes</span></p><br>
+		              <p><span>EBook</span>, <span>Italian</span>, <span>Recipes</span></p><br>
+					  <form action="/pay" method="post">
+						<div class="col-md-12">
+							<div class="form-group">
+							  <input type="text" name="email" class="form-control" placeholder="Your Email" required>
+							</div>
+						  </div>
+						<div class="col-md-12 mt-3">
+							<div class="form-group text-center">
+							  <input type="submit" value="Buy Now" class="btn btn-primary py-3 px-5">
+							</div>
+						  </div>
+					  </form>
+	              </div>
+              </div>
+            </div>
+        	</div>
+			<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img" style="background-image: url(https://assets.lulu.com/cover_thumbs/5/7/579jq2p-ebook-shortedge-384.jpg);  margin-top: 30px; margin-bottom: 30px; margin-left: 50px; margin-right: 50px;"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Walking around Italy with Debora</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€15</span>
+		                </div>
+		              </div>
+		              <p><span>EBook</span>, <span>English</span>, <span>Recipes</span></p><br>
 					  <form action="/pay" method="post">
 						<div class="col-md-12">
 							<div class="form-group">
