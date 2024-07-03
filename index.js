@@ -190,25 +190,25 @@ app.get("/register", checkAuthenticated, async (req, res) => {
 app.get("/cookingClasses", async (req, res) => {
     let result = await db.query(`SELECT * FROM blogposts where type= $1`, ['cookingclasses']);
     let author = await db.query('SELECT * FROM users WHERE id = $1', [1]);
-    res.render("blog.ejs", {heading: "Cooking Classes", posts: result.rows, author: author.rows[0], user: req.user, image: "imagesOriginal/co.jpg"});
+    res.render("blog.ejs", {heading: "Cooking Classes", posts: result.rows, author: "Debora", user: req.user, image: "imagesOriginal/co.jpg"});
 })
 
 app.get("/personalChefs", async (req, res) => {
     let result = await db.query(`SELECT * FROM blogposts where type= $1`, ['chefs']);
     let author = await db.query('SELECT * FROM users WHERE id = $1', [1]);
-    res.render("blog.ejs", {heading: "Personal Chefs", posts: result.rows, author: author.rows[0],user: req.user, image: "imagesOriginal/PAG_32.jpg"});
+    res.render("blog.ejs", {heading: "Personal Chefs", posts: result.rows, author: "Debora", user: req.user, image: "imagesOriginal/PAG_32.jpg"});
 })
 
 app.get("/cookingTeamBuilding", async (req, res) => {
     let result = await db.query(`SELECT * FROM blogposts where type= $1`, ['teambuilding']);
     let author = await db.query('SELECT * FROM users WHERE id = $1', [1]);
-    res.render("blog.ejs", {heading: "Cooking Team Building", posts: result.rows, author: author.rows[0],user: req.user, image: "imagesOriginal/teamBui.jpg"});
+    res.render("blog.ejs", {heading: "Cooking Team Building", posts: result.rows, author: "Debora", user: req.user, image: "imagesOriginal/teamBui.jpg"});
 })
 
 app.get("/recipes", async (req, res) => {
     let result = await db.query(`SELECT * FROM blogposts where type= $1`, ['recipes']);
     let author = await db.query('SELECT * FROM users WHERE id = $1', [1]);
-    res.render("blog.ejs", {heading: "Recipes", posts: result.rows, author: author.rows[0],user: req.user, image: "images/bg_3.jpg"});
+    res.render("blog.ejs", {heading: "Recipes", posts: result.rows, author: "Debora", user: req.user, image: "images/bg_3.jpg"});
 })
 
 app.get("/see-post", async (req, res) => {
