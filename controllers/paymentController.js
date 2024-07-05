@@ -39,8 +39,8 @@ const { PAYPAL_MODE, PAYPAL_CLIENT_KEY, PAYPAL_SECRET_KEY } = process.env;
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
-  'client_id': "AfTW_Z1tZWsCQR-wWEeRVd2zhpHRs0jzOVFZQgJ782xw1mK9BNCRNY1-1YQBoSy57pXTjfhjcyPFVwJG",
-  'client_secret': "EKmNnw4-okwQLElkiY6cbvW167eKljy1WBv1fq5TPmRG_H5-JsLg2gF3RVEnC0npGCbjQxobmm1Ryhvh"
+  'client_id': "AX2G5iMawyA2uk_3pGg_aURvlNIyMSm5jBk_ONjLi662_0EX2Qa2VHSVYNyH-UngF2tVK6N43e5Q5qg7",
+  'client_secret': "EPkOpykqU96bPsSxMahkobkZRgA6Vh5ECBEUCLYXVP05Q57dQxUvzMjyhaIkr3Y6QdqjEMjF92doS7Hi"
 });
 
 const renderBuyPage = async(req,res)=>{
@@ -73,8 +73,8 @@ const payProduct = async(req,res)=>{
                 "payment_method": "paypal"
             },
             "redirect_urls": {
-                "return_url": "http://localhost:4000/success",
-                "cancel_url": "http://localhost:4000/cart"
+                "return_url": "http://milanocooking.onrender.com/success",
+                "cancel_url": "http://milanocooking.onrender.com/cart"
             },
             "transactions": [{
                 "item_list": {
@@ -82,12 +82,12 @@ const payProduct = async(req,res)=>{
                         "name": "item",
                         "sku": "item",
                         "price": customAmount,
-                        "currency": "USD",
+                        "currency": "EUR",
                         "quantity": 1
                      }]
                  },
                 "amount": {
-                    "currency": "USD",
+                    "currency": "EUR",
                     "total": customAmount
                 },
                 "description": "Custome payment."
@@ -125,7 +125,7 @@ const successPage = async(req,res)=>{
             "payer_id": payerId,
             "transactions": [{
                 "amount": {
-                    "currency": "USD",
+                    "currency": "EUR",
                     "total": customAmount
                 }
             }]
