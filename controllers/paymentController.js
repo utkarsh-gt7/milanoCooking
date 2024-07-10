@@ -73,7 +73,7 @@ function sendPaymentMade(Semail, paymentObj, paymentId) {
       const mailOptions = {
         from: my_email,
         to: my_email,
-        subject: `Payment received successfully! With payment ID: ` + {paymentId},
+        subject: `Payment received successfully! With payment ID:  ${paymentId}`,
         text: orderDetails
       };
   
