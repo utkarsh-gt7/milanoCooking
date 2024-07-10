@@ -55,6 +55,40 @@ function sendConfirmation(Semail) {
     });
 }
 
+function sendPaymentMade(Semail, paymentObj, paymentId) {
+    return new Promise((resolve, reject) => {
+        const { name, email, phone, date, time, people, customAmount } = paymentObj;
+    
+        const orderDetails = `
+        Order Details:
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Date of Event: ${date}
+        Time of Event: ${time}
+        Number of People: ${people}
+        Quoted Amount: $${customAmount.toFixed(2)}
+        `;
+
+      const mailOptions = {
+        from: my_email,
+        to: my_email,
+        subject: `Payment received successfully! With payment ID: ` + {paymentId},
+        text: orderDetails
+      };
+  
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error(error);
+          reject(false);
+        } else {
+          console.log('Email sent: ' + info.response);
+          resolve(true);
+        }
+      });
+    });
+}
+
 const { PAYPAL_MODE, PAYPAL_CLIENT_KEY, PAYPAL_SECRET_KEY } = process.env;
 
 paypal.configure({
@@ -85,6 +119,8 @@ const payProduct = async(req,res)=>{
             customAmount = 15.00;
             req.session.email = req.body.email;
             req.session.purchaseType = ebook;
+        }else{
+            req.session.paymentObj = req.body;
         }
         console.log(customAmount);
         req.session.customAmount = customAmount;
@@ -175,6 +211,7 @@ const successPage = async(req,res)=>{
             sendMail(Semail);
         }else{
             sendConfirmation(Semail);
+            sendPaymentMade(Semail, req.session.paymentObj, req.query.paymentId);
         }
 
         // payment.transactions.forEach(transaction => {
@@ -192,7 +229,10 @@ const successPage = async(req,res)=>{
                 
         //     }
         // )
-                req.session.cart = [];
+                req.session.email = null;
+                req.session.purchaseType = null;
+                req.session.paymentObj = null;
+                req.session.customAmount = null;
                 res.render('success', {oid: paymentId});
             }
         });
