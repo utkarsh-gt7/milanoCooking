@@ -34,6 +34,26 @@ function sendMail(Semail) {
     });
 }
 
+function sendConfirmation(Semail) {
+    return new Promise((resolve, reject) => {
+      const mailOptions = {
+        from: my_email,
+        to: Semail,
+        subject: `Payment received successfully!`,
+        text:  "Can't wait to see you at the event."
+      };
+  
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error(error);
+          reject(false);
+        } else {
+          console.log('Email sent: ' + info.response);
+          resolve(true);
+        }
+      });
+    });
+}
 
 const { PAYPAL_MODE, PAYPAL_CLIENT_KEY, PAYPAL_SECRET_KEY } = process.env;
 
@@ -63,6 +83,7 @@ const payProduct = async(req,res)=>{
         if(req.body.customAmount == undefined){
             customAmount = 15.00;
             req.session.email = req.body.email;
+            req.session.purchaseType = ebook;
         }
         console.log(customAmount);
         req.session.customAmount = customAmount;
@@ -149,7 +170,11 @@ const successPage = async(req,res)=>{
         const Semail = req.session.email;
 
         console.log(Semail);
-        sendMail(Semail);
+        if(req.session.purchaseType == "ebook"){
+            sendMail(Semail);
+        }else{
+            sendConfirmation(Semail);
+        }
 
         // payment.transactions.forEach(transaction => {
         //     transaction.item_list.items.forEach(item => {
