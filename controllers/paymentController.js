@@ -59,9 +59,10 @@ const { PAYPAL_MODE, PAYPAL_CLIENT_KEY, PAYPAL_SECRET_KEY } = process.env;
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
-  'client_id': "AX2G5iMawyA2uk_3pGg_aURvlNIyMSm5jBk_ONjLi662_0EX2Qa2VHSVYNyH-UngF2tVK6N43e5Q5qg7",
-  'client_secret': "EPkOpykqU96bPsSxMahkobkZRgA6Vh5ECBEUCLYXVP05Q57dQxUvzMjyhaIkr3Y6QdqjEMjF92doS7Hi"
+  'client_id': process.env.PAYPAL_CLIENT_ID,
+  'client_secret': process.env.PAYPAL_CLIENT_SECRET
 });
+
 
 const renderBuyPage = async(req,res)=>{
 
