@@ -50,9 +50,9 @@ const __dirname = dirname(__filename);
 // app.use(express.static(path.join(__dirname, "./views")));
 // app.use(express.static(path.join(__dirname, "./public")));
 paypal.configure({
-    'mode': 'sandbox', //sandbox or live
+    'mode': 'live', //sandbox or live
     'client_id': process.env.PAYPAL_CLIENT_ID,
-    'client_secret': process.env.PAYPAL_CLIENT_SECRET 
+    'client_secret': process.env.PAYPAL_CLIENT_SECRET
   });
 
   var create_payment_json = {
@@ -70,12 +70,12 @@ paypal.configure({
                 "name": "item",
                 "sku": "item",
                 "price": "1.00",
-                "currency": "USD",
+                "currency": "EUR",
                 "quantity": 1
             }]
         },
         "amount": {
-            "currency": "USD",
+            "currency": "EUR",
             "total": "1.00"
         },
         "description": "This is the payment description."
