@@ -61,8 +61,8 @@ paypal.configure({
         "payment_method": "paypal"
     },
     "redirect_urls": {
-        "return_url": "http://return.url",
-        "cancel_url": "http://cancel.url"
+        "return_url": "http://milanocooking.onrender.com/",
+        "cancel_url": "http://milanocooking.onrender.com/"
     },
     "transactions": [{
         "item_list": {
