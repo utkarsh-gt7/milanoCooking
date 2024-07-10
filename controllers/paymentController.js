@@ -132,8 +132,8 @@ const payProduct = async(req,res)=>{
                 "payment_method": "paypal"
             },
             "redirect_urls": {
-                "return_url": "http://milanocooking.onrender.com/success",
-                "cancel_url": "http://milanocooking.onrender.com/cart"
+                "return_url": "http://milanocooking.onrender.com/",
+                "cancel_url": "http://milanocooking.onrender.com/"
             },
             "transactions": [{
                 "item_list": {
