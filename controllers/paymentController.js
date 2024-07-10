@@ -148,6 +148,7 @@ const successPage = async(req,res)=>{
 
         const Semail = req.session.email;
 
+        console.log(Semail);
         sendMail(Semail);
 
         // payment.transactions.forEach(transaction => {
