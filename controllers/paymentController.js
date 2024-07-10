@@ -120,6 +120,7 @@ const payProduct = async(req,res)=>{
             req.session.email = req.body.email;
             req.session.purchaseType = "ebook";
         }else{
+            req.session.email = req.body.email;
             req.session.paymentObj = req.body;
         }
         console.log(customAmount);
