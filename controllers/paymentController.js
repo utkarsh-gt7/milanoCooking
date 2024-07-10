@@ -67,7 +67,7 @@ function sendPaymentMade(Semail, paymentObj, paymentId) {
         Date of Event: ${date}
         Time of Event: ${time}
         Number of People: ${people}
-        Quoted Amount: $${customAmount.toFixed(2)}
+        Quoted Amount: ${customAmount}
         `;
 
       const mailOptions = {
