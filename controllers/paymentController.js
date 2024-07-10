@@ -118,7 +118,7 @@ const payProduct = async(req,res)=>{
         if(req.body.customAmount == undefined){
             customAmount = 15.00;
             req.session.email = req.body.email;
-            req.session.purchaseType = ebook;
+            req.session.purchaseType = "ebook";
         }else{
             req.session.paymentObj = req.body;
         }
