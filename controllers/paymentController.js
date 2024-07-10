@@ -58,7 +58,7 @@ const renderBuyPage = async(req,res)=>{
 const payProduct = async(req,res)=>{
 
     try {
-        console.log("Successful Received: " + req.body.customAmount);
+        console.log("Successful Received: " + req.body.email);
         var customAmount = parseFloat(req.body.customAmount).toFixed(2);
         if(req.body.customAmount == undefined){
             customAmount = 15.00;
